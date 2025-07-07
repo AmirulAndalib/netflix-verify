@@ -57,10 +57,11 @@ func CountryCodeToCountryName(Code string) string {
 		"wf": "瓦利斯和富图纳", "eh": "西撒哈拉", "ye": "也门", "zm": "赞比亚", "zw": "津巴布韦",
 	}
 
-	if name, exists := countryMap[strings.ToLower(Code)]; exists {
-		return name
+	for code, name := range countryMap {
+		if strings.Contains(Code, code) {
+			return name
+		}
 	}
-
 	return Code
 }
 
