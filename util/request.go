@@ -77,13 +77,8 @@ func ParseIP(s string) int {
 	if ip == nil {
 		return 0
 	}
-	for i := 0; i < len(s); i++ {
-		switch s[i] {
-		case '.':
-			return 4
-		case ':':
-			return 6
-		}
+	if ip.To4() != nil {
+		return 4
 	}
-	return 0
+	return 6
 }
