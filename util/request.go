@@ -21,9 +21,6 @@ func RequestIP(requrl string, ip string, localAddr string, proxyUrl string) (str
 		return "", errors.New("URL parse error")
 	}
 	host := urlValue.Host
-	if ip == "" {
-		ip = host
-	}
 	newrequrl := strings.Replace(requrl, host, ip, 1)
 	if proxyUrl != "" {
 		if proxy, err = url.Parse(proxyUrl); err != nil {
